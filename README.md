@@ -46,3 +46,22 @@ protected float getMin(float f){
     return f;
 }
 ```
+### 004_variable
+```
+public class Employee {
+
+    // public: visible for any child class.
+    public String name;
+
+    // private: in class only.
+    private int ggs;
+
+==== ====
+
+public class Contractor extends Employee {
+    // protected?
+    // The protected modifier specifies that the member can only be accessed within its own package
+    // (as with package-private) and,
+    // in addition, by a subclass of its class in another package.
+    protected int hourly;
+```

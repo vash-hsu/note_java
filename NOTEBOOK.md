@@ -25,6 +25,11 @@
  * instance variables
    * within a class but outside any method
    * ilitialized when class is instantiated
+   * <font color="red">QQ: Access modifiers can be given for instance variables.</font>
+   * default value
+     * number is 0
+     * Booleans is false
+     * object references is null 
  * class variables
    * within a class, outside any method, with the static keyword
 
@@ -87,14 +92,19 @@
 
 ---
 
+
+
+---
+
 # Java Keyword
+
 | . | . | . | . |
 |--|--|--|--|
 | abstract  | assert  | boolean  | break|
 |byte| case  | catch|   char|
 |class |  const |  continue|   default|
 |do |  double|   else |  enum|
-|extends  | final  finally |  float|
+|extends  | final  finally |  float|  |
 |import |  instanceof| int |  interface|
 |for |  goto|   if |  implements|
 |long | native | new | package|
@@ -102,4 +112,4 @@
 |short  |static | strictfp | super|
 |throws | transient | try | void|
 |switch | synchronized | this | throw|
-|volatile | while   |
+|volatile | while   | . | . |
