@@ -46,6 +46,7 @@ protected float getMin(float f){
     return f;
 }
 ```
+
 ### 004_variable
 ```
 public class Employee {
@@ -64,4 +65,23 @@ public class Contractor extends Employee {
     // (as with package-private) and,
     // in addition, by a subclass of its class in another package.
     protected int hourly;
+```
+
+### 005_stack
+```
+public class Stack {
+  public Stack(int size) {
+  public int pop() {
+  public boolean push(int user_input) {
+```
+
+### 006_overload
+```
+public class Calculator {
+  // constructor overloading
+  public Calculator() {
+  public Calculator(String[] userHistory) {
+  // function overloading
+  public boolean next(String op, int another) {
+  public boolean next(int another) {
 ```
