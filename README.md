@@ -85,3 +85,45 @@ public class Calculator {
   public boolean next(String op, int another) {
   public boolean next(int another) {
 ```
+
+### 007_finalize
+```
+public class Finalize {
+  public Finalize() {
+  protected void finalize() {
+
+=== ===
+
+public class Console {
+  public static void main(String[] args) {
+    System.out.println("1, create instance of Finalize");
+    Finalize myObj = new Finalize();
+    System.out.println("2, let that instance point to null");
+    myObj = null;
+    Console.nop(5);
+    System.out.println("3, force garbage collection");
+    // garbage collection will trigger finalize() of object
+    System.gc();
+    Console.nop(5);
+    System.out.println("4, be going to leave main()");
+
+=== ===
+
+1, create instance of Finalize
+Now, it's done by constructor!
+2, let that instance point to null
+        sleeping second #1/5
+        sleeping second #2/5
+        sleeping second #3/5
+        sleeping second #4/5
+        sleeping second #5/5
+3, force garbage collection
+        sleeping second #1/5
+Now, it's done by finalize function
+        sleeping second #2/5
+        sleeping second #3/5
+        sleeping second #4/5
+        sleeping second #5/5
+4, be going to leave main()
+
+```
