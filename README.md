@@ -113,17 +113,92 @@ public class Console {
 Now, it's done by constructor!
 2, let that instance point to null
         sleeping second #1/5
-        sleeping second #2/5
-        sleeping second #3/5
-        sleeping second #4/5
+        ...
         sleeping second #5/5
 3, force garbage collection
         sleeping second #1/5
 Now, it's done by finalize function
         sleeping second #2/5
-        sleeping second #3/5
-        sleeping second #4/5
+        ...
         sleeping second #5/5
 4, be going to leave main()
 
+```
+
+### 008_superClass
+```
+public class Console {
+  public static void main(String[] args)
+    System.out.println("=== MyClassC ===");
+    MyClassC myC = new MyClassC();
+    System.out.println("=== MyClassC(Hello World) ===");
+    MyClassC myC2 = new MyClassC("Hello World");
+  }
+}
+
+class MyClassC extends MyClassB {
+  public MyClassC() {
+    Helper.printWhere("MyClassC");
+    Helper.printWho(this.getClass().getName());
+  }
+
+  public MyClassC(String extra) {
+    super(extra);
+    System.out.println("I am " + this.getClass().getName()
+    + ", at Constructor MyClassC(String) "
+    + "and I told my parent: " + extra);
+  }
+}
+
+=== ===
+
+=== MyClassC ===
+inside Constructor MyClassA, I am MyClassC
+inside Constructor MyClassB, I am MyClassC
+inside Constructor MyClassC, I am MyClassC
+=== MyClassC(Hello World) ===
+inside Constructor MyClassA, I am MyClassC
+I am MyClassC, at Constructor MyClassB(String) and I have something to say: Hello World
+I am MyClassC, at Constructor MyClassC(String) and I told my parent: Hello World
+
+```
+
+### 009_stdin
+
+```
+import java.util.Scanner;
+
+public class HandleInput {
+  public static void main(String[] args) {
+    Scanner myScanner = new Scanner(System.in);
+    while (true) {
+      ...
+      System.out.print("Please leave your string message: ");
+      String lineIn = myScanner.nextLine();
+      System.out.println("You type: " + lineIn);
+      System.out.println();
+      System.out.print("Please leave your number: ");
+      double amountDouble = myScanner.nextDouble();
+      System.out.println("Your number: " + amountDouble);
+      System.out.println();
+      ...
+    }
+  }
+}
+
+```
+
+
+---
+
+# GUI
+### 100_JOptioPane
+
+```
+import javax.swing.JOptionPane;
+
+    JOptionPane.showMessageDialog(null, "Welcome\nHello\nWorld");
+    String userName = JOptionPane.showInputDialog("What is your name?");
+    String response = String.format("Welcome, %s!", userName);
+    JOptionPane.showMessageDialog(null, response);
 ```

@@ -15,10 +15,14 @@
 
 ## Encapsulation
 
+---
 ## Abstraction
 
+---
 ## Classes
 * Constructor
+ * [sample code of constructor overloading](006_overload)
+ * [sample code of finalize](007_finalize)
 * class contains
  * local variable
    * inside methods, constructors, blocks
@@ -29,7 +33,7 @@
    * default value
      * number is 0
      * Booleans is false
-     * object references is null 
+     * object references is null
  * class variables
    * within a class, outside any method, with the static keyword
 
@@ -50,10 +54,15 @@
 
 
 ### access modifiers
-#### default
-#### public
-#### protected
-#### private
+
+| - | private | default | protected | public |
+|---|---|---|---|---|
+| in same class | V | V | V | V |
+| in subclass of same package | | V | V | V |
+| in class of same package | | V | V | V |
+| in subclass of different package | | | V | V |
+| in different class of different package | | | | V |
+
 ### non-access modifiers
 #### final
 #### abstract
@@ -90,7 +99,39 @@
 * boolean : true ~ false
 * char : \u0000 ~ \uffff
 
+## Promotions allowed for Primary Types
+| Type | Valid Promotions |
+|---|---|
+| double | none |
+| float | double |
+| long | float or double |
+| int | long, float, double |
+| char | int, long, float, double |
+| short | int, long, float, double |
+| byte | short, int, long, float, double |
+| boolean | none |
+
+
+
 ---
+
+# Operators
+
+## Compound Assignment Operators
+```
++= , -=, *=, /=, %=
+```
+## Incresement and Decrement Operators
+a
+
+| | Expression | Explanation |  
+|---|---|---|  
+| preincrement | ++a | a = a+1, then use the new value of a |  
+| postincrement | a++ | use the current value of a, then a = a+1 |  
+| predecrement | --b | b = b-1, then use the new value of b |
+| postdecrement | b-- | use the current value of b, then b = b-1 |
+
+
 
 
 
@@ -113,3 +154,47 @@
 |throws | transient | try | void|
 |switch | synchronized | this | throw|
 |volatile | while   | . | . |
+
+
+---
+# QQ
+
+## Week Reference vs. Soft Reference
+* java.lang.ref, WeakReference, SoftReference, ReferenceQueue
+ * how to use
+ * when to use it
+
+## Enumeration
+
+
+## Class Relationship
+
+#### Inheritance Relationship
+* annotation at compiler time: @Overfide
+* final
+ * final method, not allowed to overwritten
+ * final class, not allowed to inherite
+
+
+#### Interfaces
+
+#### Packaging
+
+#### Inner Classes
+
+##
+
+##
+
+---
+
+# Javac Parameters
+
+-classpath [class path], to set user class path  
+-d [directories], to store .class file  
+-g, to show debug info, local variable  
+
+# Java / Javaw
+* java [options] class [args]
+* javaw [options] class [args]  
+  no show command prompt
