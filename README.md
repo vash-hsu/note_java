@@ -187,7 +187,165 @@ public class HandleInput {
 }
 
 ```
+---
 
+### 010_loop
+
+```
+private void drawDiamond_downside(int level) {
+  for (int i=level/2-1; i>=0; i--) {
+    for (int j=0; j<level; j++) {
+      if (j>=level/2-i && j <=level/2+i) {
+        System.out.print("*");
+      } else {
+        System.out.print(" ");
+      }
+    }
+    System.out.println();
+  }
+}
+```
+
+* output
+
+```
+Draw Left-Up
+*
+**
+***
+****
+*****
+******
+*******
+
+Draw Right-Up
+      *
+     **
+    ***
+   ****
+  *****
+ ******
+*******
+
+Draw Left-Down
+*******
+******
+*****
+****
+***
+**
+*
+
+Draw Right-Down
+*******
+ ******
+  *****
+   ****
+    ***
+     **
+      *
+
+Draw Diamond
+   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+
+```
+
+---
+
+### 011_io
+
+```
+private class Ls {
+    String path = "";
+    File fileHandler;
+    Ls(String targetPath) {
+        path = targetPath;
+        fileHandler = new File(targetPath);
+    }
+
+    private void run () {
+        if (fileHandler.exists()) {
+            if (fileHandler.isFile()) {
+                for (String i: getInfo(fileHandler)) {
+                    System.out.println(i);
+                }
+
+...
+    private ArrayList<String> getInfo(File fileHandle) {
+        ArrayList <String> result = new ArrayList<>();
+        result.add("absPath:\t" + fileHandle.getAbsolutePath());
+        result.add("hashCode:\t" + fileHandle.hashCode());
+        result.add("size: " + fileHandle.length());
+        result.add("property:\t" + getInfoRWX(fileHandle));
+        result.add("modified time:\t" +
+                convert2DateString(fileHandle.lastModified()));
+        return result;
+    }
+...
+private class Hexdump {
+    FileInputStream fileStream;
+
+    Hexdump(String targetPath) {
+        try {
+            File fileHandler = new File(targetPath);
+            if (fileHandler.exists() && fileHandler.isFile()) {
+                fileStream = new FileInputStream(fileHandler);
+            } else {
+                System.out.println("ERROR: invalid path/filename");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR: File not Found");
+            e.printStackTrace();
+        }
+    }
+
+    private void run() {
+        byte[] buffer = new byte[LingWidth];
+        if (fileStream == null) {
+            return;
+        }
+        try {
+            while ( true ) {
+                int byteCount = fileStream.read(buffer);
+                if (byteCount == -1) { break; }
+                String temp = new String(buffer);
+                // System.out.print(temp);
+                System.out.print(convert2Printable(temp.substring(0, byteCount)));
+                System.out.print(String.format("%" + String.valueOf(LingWidth+2 - byteCount) + "s", " "));
+                System.out.println(convert2Hex(buffer, byteCount));
+            }
+            fileStream.close();
+```
+
+* output   
+
+```
+c:\011_io\src>java Console
+Hello World
+$ ls Shell.java
+absPath:        c:\011_io\src\Shell.java
+hashCode:       13973169
+size: 6821
+property:       rwx
+modified time:  2016/11/05 18:52:11
+$ hexdump Shell.java
+path: Shell.java
+..import java.io.File;..import j  0D 0A 69 6D 70 6F 72 74 20 6A 61 ...
+ava.io.FileInputStream;..import   61 76 61 2E 69 6F 2E 46 69 6C 65 ...
+java.io.FileNotFoundException;..  6A 61 76 61 2E 69 6F 2E 46 69 6C ...
+import java.io.IOException;..imp  69 6D 70 6F 72 74 20 6A 61 76 61 ...
+ort java.text.DateFormat;..impor  6F 72 74 20 6A 61 76 61 2E 74 65 ...
+t java.text.SimpleDateFormat;..i  74 20 6A 61 76 61 2E 74 65 78 74 ...
+mport java.util.ArrayList;......  6D 70 6F 72 74 20 6A 61 76 61 2E ...
+public class Shell {..    protec  70 75 62 6C 69 63 20 63 6C 61 73 ...
+
+```
 
 ---
 
